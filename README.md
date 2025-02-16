@@ -1,3 +1,11 @@
+1. Install mysql server v.5 version 5 onwards
+2. Create database messaging
+3. Configure .env.development file with your database credentials and ports
+4. Execute the project npm run start:dev
+5. Review the tables creation in the database messaging
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
