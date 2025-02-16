@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "8166a10e-155b-4095-b702-a7bd6ccc4ea2",
+		"name": "Messaging",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31165750"
+	},
+	"item": [
+		{
+			"name": "createConversation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"clienteId\": 31,\r\n    \"tema\":\"Necesito que me reparar un celular resulta que en ocasiones no entran las llamadas con determinados numeros ustedes podrian repararlo?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/conversations/create",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"conversations",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"clienteId\": 31,\r\n    \"tema\":\"Necesito que me reparar un celular resulta que en ocasiones no entran las llamadas con determinados numeros ustedes podrian repararlo?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/conversations/create",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"conversations",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sentMessagesClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"conversationId\": 2, \r\n    \"message\": \"hello message from client\", \r\n    \"sender\": \"cliente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/messages/create",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"messages",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sentMessagesEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"second response from employee\", \r\n    \"sender\": \"client\",\r\n    \"employeeId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/messages/create",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"messages",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMessages",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"page\": \"1\",\r\n    \"limit\": 5,\r\n    \"conversation\": {\r\n        \"idconversation\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/messages/get",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"messages",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "countMessagesXIdConversation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"first response from employee\", \r\n    \"sender\": \"empleado\",\r\n    \"employeeId\": 1,\r\n    \"conversation\": {\r\n        \"idconversation\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/messages/count/1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"messages",
+						"count",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "countActiveConversations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"first response from employee\", \r\n    \"sender\": \"empleado\",\r\n    \"employeeId\": 1,\r\n    \"conversation\": {\r\n        \"idconversation\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/conversations/count/35",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"conversations",
+						"count",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getClients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"page\": 1,\r\n    \"limit\": 20,\r\n    \"conversation\": {\r\n        \"isactiva\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/clients",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/clients/30",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"clients",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getConversations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"first response from employee\", \r\n    \"sender\": \"empleado\",\r\n    \"employeeId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/conversations",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"conversations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getConversation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/conversations/client/1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"conversations",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "countMessagesByConversation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/messages/count/1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"messages",
+						"count",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
