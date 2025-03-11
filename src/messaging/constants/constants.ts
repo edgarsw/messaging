@@ -1,1 +1,1 @@
-export type TypeSender = 'cliente' | 'EmployeeEntity'
+export type TypeSender = 'cliente' | 'empleado'

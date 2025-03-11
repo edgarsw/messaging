@@ -8,6 +8,7 @@ import { ListMessages } from '../input/list.message';
 import { paginateInverse, PaginateOptions } from 'src/pagination/paginator';
 import { ApiResponse } from 'src/response/api.response';
 import { CreateMessageDto } from '../input/create.message.dto';
+import { TypeSender } from '../constants/constants';
 
 @Injectable()
 export class MessagesService {
@@ -25,7 +26,7 @@ export class MessagesService {
       .createQueryBuilder('m')
       .innerJoinAndSelect('m.conversation', 'c')
       .leftJoinAndSelect('m.employee', 'e')
-      .orderBy('m.created_at', 'ASC');
+      .orderBy('m.idmessage', 'ASC');
   }
 
   private getFilteredMessages(filter?: ListMessages) {
@@ -105,7 +106,7 @@ export class MessagesService {
     }
 
     const employee = employeeId ? await this.employeeRepo.findOne({ where: { idemployee: employeeId } }) : null;
-    if (sender === 'EmployeeEntity' && !employeeId) {
+    if (sender === 'empleado' && !employeeId) {
       throw new HttpException('There arent employee', HttpStatus.NOT_FOUND);
     }
 
@@ -120,14 +121,28 @@ export class MessagesService {
 
     const savedMessageEntity = await this.messageRepository.save(MessageEntity);
 
+    let finalMessage = null;
 
-    const finalMessage = await this.messageRepository
+    if (sender === 'empleado') {
+      finalMessage = await this.messageRepository
+        .createQueryBuilder('m')
+        .innerJoinAndSelect('m.conversation', 'co')
+        .innerJoinAndSelect('co.client', 'cl')
+        .innerJoinAndSelect('m.employee', 'e')
+        .where('m.idmessage = :messageId', { messageId: savedMessageEntity.idmessage })
+        .andWhere('co.isactiva = :isactiva', { isactiva: 1 })
+        .getOne();
+    } else {
+      finalMessage = await this.messageRepository
         .createQueryBuilder('m')
         .innerJoinAndSelect('m.conversation', 'co')
         .innerJoinAndSelect('co.client', 'cl')
         .where('m.idmessage = :messageId', { messageId: savedMessageEntity.idmessage })
         .andWhere('co.isactiva = :isactiva', { isactiva: 1 })
         .getOne();
+    }
+
+
 
     return new ApiResponse<MessageEntity>({
       status: 'success',
