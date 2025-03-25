@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"clienteId\": 31,\r\n    \"tema\":\"Necesito que me reparar un celular resulta que en ocasiones no entran las llamadas con determinados numeros ustedes podrian repararlo?\"\r\n}",
+					"raw": "{ \r\n    \"clienteId\": 50,\r\n    \"tema\":\"Creando una nueva conversacion para el cliente numero 50\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"clienteId\": 31,\r\n    \"tema\":\"Necesito que me reparar un celular resulta que en ocasiones no entran las llamadas con determinados numeros ustedes podrian repararlo?\"\r\n}",
+					"raw": "{ \r\n    \"whatsapp_telefono\": \"+5219514140379\",\r\n    \"mostrar_telefono\":\"9514140379\",\r\n    \"nombre_cliente\": \"Fulnito de tal\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,12 +48,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{local}}/conversations/create",
+					"raw": "{{local}}/clients/create",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"conversations",
+						"clients",
 						"create"
 					]
 				}
@@ -67,7 +67,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"conversationId\": 2, \r\n    \"message\": \"hello message from client\", \r\n    \"sender\": \"cliente\"\r\n}",
+					"raw": "{ \r\n    \"conversationId\": 23, \r\n    \"message\": \"nuevo mensaje\", \r\n    \"sender\": \"cliente\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -94,7 +94,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"second response from employee\", \r\n    \"sender\": \"client\",\r\n    \"employeeId\": 1\r\n}",
+					"raw": "{ \r\n    \"conversationId\": 1, \r\n    \"message\": \"second response from employee\", \r\n    \"sender\": \"empleado\",\r\n    \"employeeId\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -121,7 +121,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"page\": \"1\",\r\n    \"limit\": 5,\r\n    \"conversation\": {\r\n        \"idconversation\": 1\r\n    }\r\n}",
+					"raw": "{ \r\n    \"page\": \"4\",\r\n    \"limit\": 15,\r\n    \"conversation\": {\r\n        \"idconversation\": 23\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -210,7 +210,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"page\": 1,\r\n    \"limit\": 20,\r\n    \"conversation\": {\r\n        \"isactiva\": 1\r\n    }\r\n}",
+					"raw": "{ \r\n    \"page\": 1,\r\n    \"limit\": 25,\r\n    \"conversation\": {\r\n        \"isactive\": 1,\r\n        \"status\": \"cerrada\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -265,12 +265,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{local}}/conversations",
+					"raw": "{{local}}/conversations/all",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
-						"conversations"
+						"conversations",
+						"all"
 					]
 				}
 			},
@@ -294,14 +295,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{local}}/conversations/client/1",
+					"raw": "{{local}}/conversations/client/30",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
 						"conversations",
 						"client",
-						"1"
+						"30"
 					]
 				}
 			},
@@ -313,14 +314,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{local}}/messages/count/1",
+					"raw": "{{local}}/messages/count/30",
 					"host": [
 						"{{local}}"
 					],
 					"path": [
 						"messages",
 						"count",
-						"1"
+						"30"
 					]
 				}
 			},
